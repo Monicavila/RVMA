@@ -70,7 +70,7 @@ NAME LIST TO UPDATE:
 
 1- Quielo
 
-2- Roier
+2- Charly
 
 3-
 
