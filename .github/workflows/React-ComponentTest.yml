@@ -1,0 +1,30 @@
+name: React Component Test
+# Triggers the workflow on push to main or pull request
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  # Running unit tests workflow
+  #name of the job
+  components-test:
+  #ambient
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+      #node -v
+        node-version: [ '14' ]
+    steps:
+    #https://github.com/marketplace/actions/checkout
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install node dependencies
+        run: npm install
+      - name: Running Unit tests
+        run: npm test
