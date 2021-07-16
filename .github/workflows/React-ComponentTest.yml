@@ -1,4 +1,4 @@
-name: React Component Test
+name: React Components Test
 # Triggers the workflow on push to main or pull request
 on:
   push:
