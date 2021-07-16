@@ -1,7 +1,7 @@
-import React from "react";
+import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { act } from "react-dom/test-utils";
-import Room from "../components/room/room";
+import Room from '../components/room/room';
 
 test('renders learn react link', () => {
     act(()=>{

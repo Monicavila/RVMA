@@ -92,7 +92,6 @@ function Room(props) {
     if (inputRef.current && !inputRef.current.contains(e.target)) {
       setInputVisible(false);
       socketRef.current.emit("set room name", {roomID: roomID, roomName: roomName })
-      // console.log("HOLA")
     }
   }
 
@@ -106,7 +105,6 @@ function Room(props) {
   });
 
   useEffect(() => {
-      //io('http://localhost:8000/');
       socketRef.current = io.connect("/");
       navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
           userVideo.current.srcObject = stream;
@@ -245,13 +243,12 @@ function Room(props) {
             <div className={styles.userslist} onClick={NameList}>
               {userNames.map(username => <p>{username}</p>)}
             </div>
-            {/* <div className={styles.userslist}></div> */}
             <Container>
               <StyledVideo muted controls autoPlay playsInline ref={userVideo} className={styles.host}/>
               {peers.map((peer, index) => {
                   console.log(peers)
                   return (
-                      <Video muted controls playsInline playsInline key={index} peer={peer} />
+                      <Video muted controls autoPlay playsInline key={index} peer={peer} />
                   );
               })}
             </Container>
