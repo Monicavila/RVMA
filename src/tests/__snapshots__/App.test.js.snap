@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div
+  className="containerCR"
+>
+  <div
+    className="creatingRoom"
+  >
+    <div
+      className="left_part"
+    >
+      <div
+        className="on"
+      />
+    </div>
+    <div
+      className="centerDown"
+    >
+      <div
+        className="slider"
+      >
+        <div
+          className="switch_button"
+        >
+          <input
+            className="switch_button__checkbox"
+            id="switch_label"
+            name="switch_button"
+            onClick={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="switch_button__label"
+            htmlFor="switch_label"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="right_part"
+    >
+      <div
+        className="logobla"
+      />
+      <div
+        className="letsnack"
+      >
+        <p
+          className="snacktogether"
+        >
+          Let's snack together while meeting is going on.
+          <br />
+          <br />
+          It's FREE! Try it!
+        </p>
+      </div>
+      <div
+        className="newmeet"
+        onClick={[Function]}
+      >
+        NEW MEETING
+      </div>
+      <input
+        className="link_input"
+        onChange={[Function]}
+        placeholder="Enter your URL"
+        type="text"
+      />
+      <div
+        className="join"
+        onClick={[Function]}
+        path="/"
+      >
+        Join!
+      </div>
+    </div>
+  </div>
+</div>
+`;

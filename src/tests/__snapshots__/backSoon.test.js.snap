@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Landing snapshot 1`] = `
+<div
+  className="Landing_page"
+>
+  <div
+    className="left_side"
+  />
+  <div
+    className="center_down"
+  >
+    <div
+      className="slider"
+    >
+      <div
+        className="switch_button"
+      >
+        <input
+          className="switch_button__checkbox"
+          data-testid="switch_off"
+          id="switch_label"
+          name="switch_button"
+          onClick={[Function]}
+          type="checkbox"
+        />
+        <label
+          className="switch_button__label"
+          htmlFor="switch_label"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="right_side"
+  >
+    <div
+      className="logo"
+    />
+    <div
+      className="startmeeting"
+    />
+  </div>
+</div>
+`;
