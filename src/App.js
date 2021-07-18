@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Meeting} />
-        <Route path="/room/:roomID" exact render={props => <Room {...props}/>}/>
+        <Route path="/room/:roomID" exact component={Room}/>
         <Route path="/back-soon" exact component={Landing} />
       </Switch>
     </BrowserRouter>
