@@ -43,7 +43,7 @@ function Room(props) {
   const socketRef = useRef();
   const userVideo = useRef();
   const peersRef = useRef([]);
-  const roomID = props.match.params.roomID;
+  const roomID = props.roomID;
   var actualURL = window.location.href;
   const [showUrl, setShowUrl] = useState(true);
   const [showName, setShowName]  = useState(true);
