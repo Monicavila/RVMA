@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Landing snapshot 1`] = `
+<div
+  className="room modalBG"
+>
+  <div
+    className="linkPopUp"
+    hidden={false}
+  >
+    <h3
+      className="permission"
+    >
+      Permissions
+    </h3>
+    <div
+      className="close"
+      onClick={[Function]}
+    />
+    <p
+      className="instructions"
+    >
+      <mark>
+        Edit the name of the room. As you wish!
+      </mark>
+      <br />
+      Share the code with your guests.
+      <br />
+      And your meeting is ready!
+    </p>
+    <div
+      className="urlContainer"
+    >
+      <h3
+        className="url"
+      >
+        http://localhost/
+      </h3>
+      <div
+        className="copyIcon"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="welcomecontainer"
+    hidden={false}
+  >
+    <p
+      className="welcomemessage"
+    >
+       
+      Welcome!
+      <br />
+      <span
+        className="enterName"
+      >
+        Enter your name o nickname to start!
+        <span />
+      </span>
+       
+      <br />
+      <br />
+      <br />
+      <br />
+      <input
+        className="inputNickname"
+        onChange={[Function]}
+        placeholder="Name"
+        type="text"
+        value=""
+      />
+    </p>
+    <button
+      className="okButton"
+      id="buttonOk"
+      onClick={[Function]}
+    >
+      OK!
+    </button>
+  </div>
+  <div
+    className="roomcontainer"
+  >
+    <div
+      className="roomname"
+    >
+      <span
+        onClick={[Function]}
+      >
+        ROOM NAME
+      </span>
+    </div>
+    <div
+      className="logodown"
+    />
+    <div
+      className="link"
+      onClick={[Function]}
+    />
+    <div
+      className="arrow"
+      onClick={[Function]}
+    />
+    <div
+      className="userslist"
+      onClick={[Function]}
+    />
+    <div
+      className="sc-bdnxRM cWYzyh"
+    >
+      <video
+        autoPlay={true}
+        className="sc-gtsrHT bdFdmv host"
+        controls={true}
+        muted={true}
+        playsInline={true}
+      />
+    </div>
+  </div>
+</div>
+`;
