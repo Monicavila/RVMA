@@ -12,9 +12,9 @@ function Landing(props) {
           <div className={styles.slider}>
             <div className={styles.switch_button}>
             {/*Checkbox*/}
-            <input type="checkbox" name="switch_button" id="switch_label" onClick={turnOn} className={styles.switch_button__checkbox} />
+            <input type="checkbox" name="switch_button" data-testid="switch_off" id="switch_label" onClick={turnOn} className={styles.switch_button__checkbox} />
             {/*switch*/}
-            <label for="switch_label" className={styles.switch_button__label}>
+            <label htmlFor="switch_label" className={styles.switch_button__label}>
             </label>
             </div>
           </div>

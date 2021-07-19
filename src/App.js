@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Meeting} />
-        <Route path="/room/:roomID" component={Room} />
+        <Route path="/room/:roomID" render={(props) => {const { match } = props; return <Room {...props} roomID={match.params.roomID} />}}/>
         <Route path="/back-soon" exact component={Landing} />
       </Switch>
     </BrowserRouter>
