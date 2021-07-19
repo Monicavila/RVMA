@@ -5,7 +5,7 @@ function UsersList (props) {
     const [usersList, setUsersList] = useState(false);
     const userNames = props.userNames;
     return(
-        <div data-testid="toggle"
+        <div id="toggle"
           className={styles.userslist}
           onClick={() => {
             setUsersList((previousState) => !previousState);
