@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { act } from "react-dom/test-utils";
 import App from '../App';
 
-test('renders learn react link', () => {
+test('renders start meeting link', () => {
   act(()=>{
     render(<App />);
   })

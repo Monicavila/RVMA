@@ -21,8 +21,7 @@ describe("UsersList", () => {
     const wrapper = mount(<UsersList onClick={setUsersList} />);
     const handleClick = jest.spyOn(React, "useState");
     handleClick.mockImplementation(previousState => [previousState, setUsersList]);
- 
     wrapper.find("#toggle").simulate("click");
     expect(setUsersList).toBeTruthy();
   });
- });
+});
