@@ -1,0 +1,34 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-console": "warn", 
+        "no-use-before-define": "warn",
+        "no-empty": "warn",
+        "no-irregular-whitespace": "warn",
+        "spaced-comment": "warn",
+        //Only apply in App.js before fix all enlist warnings, because is under workflow pass params
+        "react/prop-types": "off",
+        //Only apply for room.jsx before fix all enlist warnings, because is under workflow pass params
+        "react/jsx-key": "off",
+        "quotes": ["error", "double", { "allowTemplateLiterals": true}]
+    }
+}

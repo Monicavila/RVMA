@@ -1,3 +1,4 @@
+import React  from "react";
 import styles from "./landing.module.scss";
 /**
  * Back soon page that's display the switch to start a meeting again
@@ -5,9 +6,9 @@ import styles from "./landing.module.scss";
  * @returns {Object}
  */
 
-function Landing(props) {
+function Landing() {
   function turnOn() {
-    props.history.push("/");
+    Landing.history.push("/");
   }
 
   return (
@@ -16,9 +17,9 @@ function Landing(props) {
         <div className={styles.center_down}>
           <div className={styles.slider}>
             <div className={styles.switch_button}>
-            {/*Checkbox*/}
+            {/* Checkbox */}
             <input type="checkbox" name="switch_button" data-testid="switch_off" id="switch_label" onClick={turnOn} className={styles.switch_button__checkbox} />
-            {/*switch*/}
+            {/* switch */}
             <label htmlFor="switch_label" className={styles.switch_button__label}>
             </label>
             </div>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Landing from './components/landing/landing';
+import Landing from "./components/landing/landing";
 import Meeting from "./components/createRoom/createRoom";
 import Room from "./components/room/room";
 

@@ -112,6 +112,54 @@ function Room(props) {
       document.removeEventListener("mousedown", onClickOutSide);
     };
   });
+
+  /**
+   * Create a Peer
+   * @param {String} userToSignal 
+   * @param {String} callerID 
+   * @param {Object} stream - Active status and Id
+   * @returns {String[]}
+   */
+   function createPeer(userToSignal, callerID, stream) {
+    const peer = new Peer({
+      initiator: true,
+      trickle: false,
+      stream,
+    });
+
+    peer.on("signal", (signal) => {
+      socketRef.current.emit("sending signal", {
+        userToSignal,
+        callerID,
+        signal,
+      });
+    });
+
+    return peer;
+  }
+/**
+ * Add a Peer 
+ * @param {String} incomingSignal 
+ * @param {Object} callerID 
+ * @param {String} stream 
+ * @returns {String[]}
+ */
+  function addPeer(incomingSignal, callerID, stream) {
+    const peer = new Peer({
+      initiator: false,
+      trickle: false,
+      stream,
+    });
+
+    peer.on("signal", (signal) => {
+      socketRef.current.emit("returning signal", { signal, callerID });
+    });
+
+    peer.signal(incomingSignal);
+
+    return peer;
+  }
+
   /**
    * Socket io actions
    */
@@ -171,52 +219,6 @@ function Room(props) {
         });
       });
   }, [roomID]);
-  /**
-   * Create a Peer
-   * @param {String} userToSignal 
-   * @param {String} callerID 
-   * @param {Object} stream - Active status and Id
-   * @returns {String[]}
-   */
-  function createPeer(userToSignal, callerID, stream) {
-    const peer = new Peer({
-      initiator: true,
-      trickle: false,
-      stream,
-    });
-
-    peer.on("signal", (signal) => {
-      socketRef.current.emit("sending signal", {
-        userToSignal,
-        callerID,
-        signal,
-      });
-    });
-
-    return peer;
-  }
-/**
- * Add a Peer 
- * @param {String} incomingSignal 
- * @param {Object} callerID 
- * @param {String} stream 
- * @returns {String[]}
- */
-  function addPeer(incomingSignal, callerID, stream) {
-    const peer = new Peer({
-      initiator: false,
-      trickle: false,
-      stream,
-    });
-
-    peer.on("signal", (signal) => {
-      socketRef.current.emit("returning signal", { signal, callerID });
-    });
-
-    peer.signal(incomingSignal);
-
-    return peer;
-  }
 
   return (
     <div
@@ -305,7 +307,7 @@ function Room(props) {
             className={styles.host}
           />
           {peers.map((peer, index) => {
-            console.log(peers);
+            /* console.log(peers); */
             return (
               <Video
                 muted
