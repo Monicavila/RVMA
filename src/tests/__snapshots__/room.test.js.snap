@@ -104,6 +104,7 @@ exports[`renders the Landing snapshot 1`] = `
     />
     <div
       className="userslist"
+      id="toggle"
       onClick={[Function]}
     />
     <div

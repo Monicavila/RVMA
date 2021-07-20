@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { act } from "react-dom/test-utils";
 import BackSoon from "../components/landing/landing";
 
-test('renders learn react link', () => {
+test('renders switch on your meeting', () => {
     act(()=>{
     render(<BackSoon />);
     })

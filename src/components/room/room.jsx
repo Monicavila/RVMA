@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import UsersList from "../usersList/usersList";
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +50,6 @@ function Room(props) {
   const [inputVisible, setInputVisible] = useState(false);
   const [roomName, setroomName] = useState("ROOM NAME");
   const [userName, setUserName] = useState("");
-  const [usersList, setUsersList] = useState(false);
 
   let useNameLol = userName;
   let names = [];
@@ -245,22 +245,7 @@ function Room(props) {
         <div className={styles.logodown}></div>
         <div className={styles.link} onClick={handleModalOpen}></div>
         <div className={styles.arrow} onClick={logOut}></div>
-        <div
-          className={styles.userslist}
-          onClick={() => {
-            setUsersList((previousState) => !previousState);
-          }}
-        >
-          {usersList
-            ? userNames.map((username, index) => (
-                <div className={styles.bg_list}>
-                  <div className={styles.img_user} key={index}>
-                    <div className={styles.user_name}>{username}</div>
-                  </div>
-                </div>
-              ))
-            : null}
-        </div>
+        <UsersList userNames={userNames}/>
         <Container>
           <StyledVideo
             muted
