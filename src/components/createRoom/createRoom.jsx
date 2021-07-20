@@ -4,7 +4,7 @@ import styles from "./createRoom.module.scss";
 /**
  * Landing page to creat a meetin or join a meeting.
  * @param {Object} props - Landing history, location, match and roomID properties
- * @returns 
+ * @returns {Object}
  */
 const Meeting = (props) => {
   function create() {

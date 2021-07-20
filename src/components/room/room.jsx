@@ -21,7 +21,7 @@ const StyledVideo = styled.video`
 /**
  * Start streaming video
  * @param {Object} props - Recive <ForwardRef />, Array(0) 
- * @returns 
+ * @returns {Object}
  */
 const Video = (props) => {
   const ref = useRef();
@@ -176,7 +176,7 @@ function Room(props) {
    * @param {String} userToSignal 
    * @param {String} callerID 
    * @param {Object} stream - Active status and Id
-   * @returns 
+   * @returns {String[]}
    */
   function createPeer(userToSignal, callerID, stream) {
     const peer = new Peer({
@@ -200,7 +200,7 @@ function Room(props) {
  * @param {String} incomingSignal 
  * @param {Object} callerID 
  * @param {String} stream 
- * @returns 
+ * @returns {String[]}
  */
   function addPeer(incomingSignal, callerID, stream) {
     const peer = new Peer({

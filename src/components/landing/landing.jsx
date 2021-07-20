@@ -2,7 +2,7 @@ import styles from "./landing.module.scss";
 /**
  * Back soon page that's display the switch to start a meeting again
  * @param {Object} props - Landing history, location, match and roomID properties
- * @returns 
+ * @returns {Object}
  */
 
 function Landing(props) {
