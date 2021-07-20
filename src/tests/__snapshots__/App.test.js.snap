@@ -49,10 +49,10 @@ exports[`renders a snapshot 1`] = `
         <p
           className="snacktogether"
         >
-          Let's snack together while meeting is going on.
+          Let us snack together while meeting is going on.
           <br />
           <br />
-          It's FREE! Try it!
+          It is FREE! Try it!
         </p>
       </div>
       <div

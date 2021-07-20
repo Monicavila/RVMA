@@ -18,7 +18,11 @@ const StyledVideo = styled.video`
   height: 35%;
   width: 40%;
 `;
-
+/**
+ * Start streaming video
+ * @param {Object} props - Recive <ForwardRef />, Array(0) 
+ * @returns {Object}
+ */
 const Video = (props) => {
   const ref = useRef();
 
@@ -35,7 +39,11 @@ const videoConstraints = {
   height: window.innerHeight / 2,
   width: window.innerWidth / 2,
 };
-
+/**
+ * Room meeting, space to display video, users list, URL and log out actions.
+ * @param {Object} props - Room history, location, match and roomID properties
+ * @returns {Object}
+ */
 function Room(props) {
   const [peers, setPeers] = useState([]);
   const [userNames, setuserNames] = useState([]);
@@ -54,23 +62,36 @@ function Room(props) {
   let useNameLol = userName;
   let names = [];
   names.push(useNameLol);
-
+  /**
+   * Asigned the button with styles.arrow to log out from room
+   */
   function logOut() {
     props.history.push("/back-soon");
     window.location.reload(true);
   }
-
+  /**
+   * Asigned to x button with styles.close 
+   */
   const handleModalClose = () => {
     setShowUrl(false);
   };
+  /**
+   * Asigned to button with styles.link
+   */
   const handleModalOpen = () => {
     setShowUrl(true);
   };
+  /**
+   * Asigned to Ok! button with id buttonOk
+   */
   const handleSecondModalClose = () => {
     socketRef.current.emit("join name", userName);
     setShowName(false);
   };
-
+  /**
+   * Asigned to room name input
+   * @param {Object} e - Event handler to detect input area.
+   */
   const onClickOutSide = (e) => {
     if (inputRef.current && !inputRef.current.contains(e.target)) {
       setInputVisible(false);
@@ -80,7 +101,9 @@ function Room(props) {
       });
     }
   };
-
+  /**
+   * Deactivate input's room name
+   */
   useEffect(() => {
     if (inputVisible) {
       document.addEventListener("mousedown", onClickOutSide);
@@ -90,52 +113,14 @@ function Room(props) {
     };
   });
 
-  useEffect(() => {
-    socketRef.current = io.connect("/");
-    navigator.mediaDevices
-      .getUserMedia({ video: videoConstraints, audio: true })
-      .then((stream) => {
-        userVideo.current.srcObject = stream;
-        socketRef.current.emit("join room", roomID);
-        socketRef.current.emit("get room name", roomID);
-        socketRef.current.on("room name", (roomName) => {
-          setroomName(roomName);
-        });
-        socketRef.current.on("all users", (users) => {
-          const peers = [];
-          users.forEach((userID) => {
-            const peer = createPeer(userID, socketRef.current.id, stream);
-            peersRef.current.push({
-              peerID: userID,
-              peer,
-            });
-            peers.push(peer);
-          });
-          setPeers(peers);
-        });
-
-        socketRef.current.on("user joined", (payload) => {
-          const peer = addPeer(payload.signal, payload.callerID, stream);
-          peersRef.current.push({
-            peerID: payload.callerID,
-            peer,
-          });
-
-          setPeers((users) => [...users, peer]);
-        });
-
-        socketRef.current.on("receiving returned signal", (payload) => {
-          const item = peersRef.current.find((p) => p.peerID === payload.id);
-          item.peer.signal(payload.signal);
-        });
-
-        socketRef.current.on("get names", (usersName) => {
-          setuserNames(usersName);
-        });
-      });
-  }, [roomID]);
-
-  function createPeer(userToSignal, callerID, stream) {
+  /**
+   * Create a Peer
+   * @param {String} userToSignal 
+   * @param {String} callerID 
+   * @param {Object} stream - Active status and Id
+   * @returns {String[]}
+   */
+   function createPeer(userToSignal, callerID, stream) {
     const peer = new Peer({
       initiator: true,
       trickle: false,
@@ -152,7 +137,13 @@ function Room(props) {
 
     return peer;
   }
-
+/**
+ * Add a Peer 
+ * @param {String} incomingSignal 
+ * @param {Object} callerID 
+ * @param {String} stream 
+ * @returns {String[]}
+ */
   function addPeer(incomingSignal, callerID, stream) {
     const peer = new Peer({
       initiator: false,
@@ -168,6 +159,66 @@ function Room(props) {
 
     return peer;
   }
+
+  /**
+   * Socket io actions
+   */
+  useEffect(() => {
+    socketRef.current = io.connect("/");
+    /**
+     * Turn on audio and video
+     */
+    navigator.mediaDevices
+      .getUserMedia({ video: videoConstraints, audio: true })
+      .then((stream) => {
+        userVideo.current.srcObject = stream;
+        socketRef.current.emit("join room", roomID);
+        socketRef.current.emit("get room name", roomID);
+        socketRef.current.on("room name", (roomName) => {
+          setroomName(roomName);
+        });
+        /**
+         * Identify userId and add them in a peer
+         */
+        socketRef.current.on("all users", (users) => {
+          const peers = [];
+          users.forEach((userID) => {
+            const peer = createPeer(userID, socketRef.current.id, stream);
+            peersRef.current.push({
+              peerID: userID,
+              peer,
+            });
+            peers.push(peer);
+          });
+          setPeers(peers);
+        });
+        /**
+         * Detected the participants in the peer 
+         */
+        socketRef.current.on("user joined", (payload) => {
+          const peer = addPeer(payload.signal, payload.callerID, stream);
+          peersRef.current.push({
+            peerID: payload.callerID,
+            peer,
+          });
+
+          setPeers((users) => [...users, peer]);
+        });
+        /**
+         * Back the peer signal
+         */
+        socketRef.current.on("receiving returned signal", (payload) => {
+          const item = peersRef.current.find((p) => p.peerID === payload.id);
+          item.peer.signal(payload.signal);
+        });
+        /**
+         * Create uses list names
+         */
+        socketRef.current.on("get names", (usersName) => {
+          setuserNames(usersName);
+        });
+      });
+  }, [roomID]);
 
   return (
     <div
@@ -256,7 +307,7 @@ function Room(props) {
             className={styles.host}
           />
           {peers.map((peer, index) => {
-            console.log(peers);
+            /* console.log(peers); */
             return (
               <Video
                 muted
