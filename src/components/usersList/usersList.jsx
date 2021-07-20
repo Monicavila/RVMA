@@ -4,7 +4,7 @@ import React, { useState } from "react";
 /**
  * Toggle element to display participants names.
  * @param {string[]} props - Names
- * @returns
+ * @returns {string[]}
  */
 function UsersList (props) {
     const [usersList, setUsersList] = useState(false);
