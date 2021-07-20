@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import { act } from "react-dom/test-utils";
-import App from '../App';
+import App from "../App";
 
-test('renders start meeting link', () => {
+test("renders start meeting link", () => {
   act(()=>{
     render(<App />);
   })
@@ -11,7 +11,7 @@ test('renders start meeting link', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-it('renders a snapshot', () => {
+it("renders a snapshot", () => {
   const tree = renderer.create(<App/>).toJSON();
   expect(tree).toMatchSnapshot();
 });
