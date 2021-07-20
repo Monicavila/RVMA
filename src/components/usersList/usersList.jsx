@@ -1,6 +1,11 @@
 import styles from "../room/room.module.scss";
 import React, { useState } from "react";
 
+/**
+ * Toggle element to display participants names.
+ * @param {string[]} props - Names
+ * @returns
+ */
 function UsersList (props) {
     const [usersList, setUsersList] = useState(false);
     const userNames = props.userNames;

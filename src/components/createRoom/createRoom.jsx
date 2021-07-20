@@ -1,7 +1,11 @@
 import React, {useState} from "react";
 import { v1 as uuid } from "uuid";
 import styles from "./createRoom.module.scss";
-
+/**
+ * Landing page to creat a meetin or join a meeting.
+ * @param {Object} props - Landing history, location, match and roomID properties
+ * @returns 
+ */
 const Meeting = (props) => {
   function create() {
     const id = uuid();

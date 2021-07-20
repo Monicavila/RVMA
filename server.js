@@ -13,6 +13,9 @@ const rooms = {};
 const socketToRoom = {};
 
 io.on('connection', socket => {
+    /**
+     * Manage roomID and conect to socket meeting, manage how many participants allow the meeting room
+     */
     socket.on("join room", roomID => {
         if (users[roomID]) {
             const length = users[roomID].length;
@@ -28,12 +31,16 @@ io.on('connection', socket => {
         const usersInThisRoom = users[roomID].filter(id => id !== socket.id);
         socket.emit("all users", usersInThisRoom);
     });
-
+    /**
+     * Get and display room name
+     */
     socket.on("get room name", roomId => {
         console.log("ROOMS DETAILED", roomId, rooms[roomId])
         socket.emit("room name", rooms[roomId] || 'New Room')
     })
-
+    /**
+     * Update room name if the user change it
+     */
     socket.on("set room name", (roomDetails) => {
         const {roomID, roomName} = roomDetails;
         console.log(roomDetails);
@@ -42,23 +49,31 @@ io.on('connection', socket => {
         console.log(roomName, "THIS IS ROOM NAME", "SOMETHING WEIRD")
         socket.broadcast.emit("room name", roomName || 'New Roomssssss')
     })
-
+    /**
+     * Set participant name
+     */
     socket.on("join name", userName => {
         usersName.push(userName)
         console.log(usersName)
         socket.emit("get names", usersName)
         socket.emit("get names", usersName)
     })
-
+    /**
+     * Send signal to the peer
+     */
     socket.on("sending signal", payload => {
         io.to(payload.userToSignal).emit('user joined', { signal: payload.signal, callerID: payload.callerID });
         // socket.broadcast.emit("user joined", { signal: payload.signal, callerID: payload.callerID })
     });
-
+    /**
+     * Return signal from the peer
+     */
     socket.on("returning signal", payload => {
         io.to(payload.callerID).emit('receiving returned signal', { signal: payload.signal, id: socket.id });
     });
-
+    /**
+     * Finished the meeting
+     */
     socket.on('disconnect', () => {
         const roomID = socketToRoom[socket.id];
         let room = users[roomID];
