@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Testing &#8212; Video APP - React components testing 1.5 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Deliver sanitized code" href="clean_code.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="testing">
+<span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<section id="rendering">
+<h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">¶</a></h2>
+<p>To execute a render test you need to know that <code class="docutils literal notranslate"><span class="pre">&#64;testing-library/react</span></code> is already installed in a React project, included <code class="docutils literal notranslate"><span class="pre">react-dom/test-utils</span></code> tool as explained in the oficial <a class="reference external" href="https://testing-library.com/docs/react-testing-library/intro/">Testing Library</a> page.</p>
+<p>Create a folder called test, and inside of it, create a new file namecomponent.test.js and import the next elements like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">render</span><span class="p">,</span> <span class="n">screen</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;@testing-library/react&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">act</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;react-dom/test-utils&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">BackSoon</span> <span class="kn">from</span> <span class="s2">&quot;../components/landing/landing&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The third object imported is the component we want to test, next we write the test argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">(</span><span class="s2">&quot;renders switch on your meeting&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">act</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="n">render</span><span class="p">(</span><span class="o">&lt;</span><span class="n">BackSoon</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="n">const</span> <span class="n">linkElement</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">getByTestId</span><span class="p">(</span><span class="s2">&quot;switch_off&quot;</span><span class="p">);</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">linkElement</span><span class="p">)</span><span class="o">.</span><span class="n">toBeInTheDocument</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Act process and test the units to the DOM, so we only require inside this function rendered our component. We need to pick one of the elements that are inside the component and assign to component.jsx module a  test ID, declared in this case as <code class="docutils literal notranslate"><span class="pre">data-testid=&quot;switch_off</span></code>.</p>
+<p>Remember this id must be in the html label from landing.jsx file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;checkbox&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;switch_button&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">testid</span><span class="o">=</span><span class="s2">&quot;switch_off&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;switch_label&quot;</span> <span class="n">onClick</span><span class="o">=</span><span class="p">{</span><span class="n">turnOn</span><span class="p">}</span> <span class="n">className</span><span class="o">=</span><span class="p">{</span><span class="n">styles</span><span class="o">.</span><span class="n">switch_button__checkbox</span><span class="p">}</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Now we only need to declare a const variable to store the element and display it in the screen. The finally step is set that the element we want to test is content in the Document with <code class="docutils literal notranslate"><span class="pre">toBeInTheDocument();</span></code> matcher. The function is ready, please execute the test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>This is our first render test with <code class="docutils literal notranslate"><span class="pre">&#64;testing-library/react</span></code> and <code class="docutils literal notranslate"><span class="pre">react-test-renderer</span></code>. An alternative is use enzyme and <code class="docutils literal notranslate"><span class="pre">&#64;wojtekmaj/enzyme-adapter-react-17</span></code> so we must install both with the next comands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span> <span class="n">enzyme</span>
+
+<span class="n">npm</span> <span class="n">install</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span> <span class="nd">@wojtekmaj</span><span class="o">/</span><span class="n">enzyme</span><span class="o">-</span><span class="n">adapter</span><span class="o">-</span><span class="n">react</span><span class="o">-</span><span class="mi">17</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/wojtekmaj/enzyme-adapter-react-17">https://github.com/wojtekmaj/enzyme-adapter-react-17</a></p>
+<p>Create another file inside tests folder as othercomponent.test.js and configurate it as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">shallow</span><span class="p">,</span> <span class="n">mount</span><span class="p">,</span> <span class="n">configure</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;enzyme&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">Adapter</span> <span class="kn">from</span> <span class="s2">&quot;@wojtekmaj/enzyme-adapter-react-17&quot;</span><span class="p">;</span>
+<span class="n">configure</span><span class="p">({</span> <span class="n">adapter</span><span class="p">:</span> <span class="n">new</span> <span class="n">Adapter</span><span class="p">()</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Remeber to import React and your component also in this file. The code structure looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">describe</span><span class="p">(</span><span class="s2">&quot;UsersList&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">it</span><span class="p">(</span><span class="s2">&quot;renders correctly&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="n">UsersList</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="n">it</span><span class="p">(</span><span class="s2">&quot;detect div container&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">const</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="n">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="n">UsersList</span> <span class="o">/&gt;</span><span class="p">);</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">wrapper</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>We will test if it’s renderd and the elements are displayed well. The render testing works with <code class="docutils literal notranslate"><span class="pre">shallow</span></code> component from <span class="xref std std-doc">enzyme</span> indicating the html label we want to corroborate. In this example is selecting a div that function as a container. In the next page we will learn how to apply this library to test events in a component too. Remember to execute <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> to run the tests.</p>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p>To perform this kind of tests we need <code class="docutils literal notranslate"><span class="pre">enzyme</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;wojtekmaj/enzyme-adapter-react-17</span></code> so we must install both with the next comands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">i</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span> <span class="n">enzyme</span>
+
+<span class="n">npm</span> <span class="n">install</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span> <span class="nd">@wojtekmaj</span><span class="o">/</span><span class="n">enzyme</span><span class="o">-</span><span class="n">adapter</span><span class="o">-</span><span class="n">react</span><span class="o">-</span><span class="mi">17</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/wojtekmaj/enzyme-adapter-react-17">https://github.com/wojtekmaj/enzyme-adapter-react-17</a></p>
+<p>Creat an other file inside tests folder as othercomponent.test.js and configurate it as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">shallow</span><span class="p">,</span> <span class="n">mount</span><span class="p">,</span> <span class="n">configure</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;enzyme&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">Adapter</span> <span class="kn">from</span> <span class="s2">&quot;@wojtekmaj/enzyme-adapter-react-17&quot;</span><span class="p">;</span>
+<span class="n">configure</span><span class="p">({</span> <span class="n">adapter</span><span class="p">:</span> <span class="n">new</span> <span class="n">Adapter</span><span class="p">()</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Remeber to import React and your component also in this file. The code structure looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">React</span> <span class="kn">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="p">{</span> <span class="n">shallow</span><span class="p">,</span> <span class="n">mount</span><span class="p">,</span> <span class="n">configure</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;enzyme&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">Adapter</span> <span class="kn">from</span> <span class="s2">&quot;@wojtekmaj/enzyme-adapter-react-17&quot;</span><span class="p">;</span>
+<span class="n">configure</span><span class="p">({</span> <span class="n">adapter</span><span class="p">:</span> <span class="n">new</span> <span class="n">Adapter</span><span class="p">()</span> <span class="p">});</span>
+<span class="kn">import</span> <span class="nn">UsersList</span> <span class="kn">from</span> <span class="s2">&quot;../components/usersList/usersList&quot;</span><span class="p">;</span>
+
+<span class="n">describe</span><span class="p">(</span><span class="s2">&quot;UsersList&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="o">//</span><span class="n">Mock</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">see</span> <span class="k">if</span> <span class="n">the</span> <span class="n">state</span> <span class="n">changes</span>
+
+<span class="n">it</span><span class="p">(</span><span class="s2">&quot;should update state on click&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">const</span> <span class="n">setUsersList</span> <span class="o">=</span> <span class="n">jest</span><span class="o">.</span><span class="n">fn</span><span class="p">();</span>
+    <span class="n">const</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="n">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="n">UsersList</span> <span class="n">onClick</span><span class="o">=</span><span class="p">{</span><span class="n">setUsersList</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="n">const</span> <span class="n">handleClick</span> <span class="o">=</span> <span class="n">jest</span><span class="o">.</span><span class="n">spyOn</span><span class="p">(</span><span class="n">React</span><span class="p">,</span> <span class="s2">&quot;useState&quot;</span><span class="p">);</span>
+    <span class="n">handleClick</span><span class="o">.</span><span class="n">mockImplementation</span><span class="p">(</span><span class="n">previousState</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">previousState</span><span class="p">,</span> <span class="n">setUsersList</span><span class="p">]);</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;#toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">);</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">setUsersList</span><span class="p">)</span><span class="o">.</span><span class="n">toBeTruthy</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The mock is set by the <code class="docutils literal notranslate"><span class="pre">jest.fn();</span></code> then we <code class="docutils literal notranslate"><span class="pre">mount</span></code> the component and pass to this one the onClick action that is stablished in the hook of the useState inside the component file.jsx, like this <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">[usersList,</span> <span class="pre">setUsersList]</span> <span class="pre">=</span> <span class="pre">useState(false);</span></code>, <code class="docutils literal notranslate"><span class="pre">jest.spyOn</span></code> pointed to this hook after we simuleated the state change with <code class="docutils literal notranslate"><span class="pre">handleClick.mockImplementation</span></code>. Very important in this simulation is that we also need an id in the html label that acts as a button. In this case is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;div id=&quot;toggle&quot;
+  className={styles.userslist}
+  onClick={() =&gt; {
+    setUsersList((previousState) =&gt; !previousState);
+  }}
+&gt;
+</pre></div>
+</div>
+<p>Before we execute <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> we will try the library Getusermedia for our video and audio components, is very easy to implement this test but first you need to install it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">getusermedia</span>
+</pre></div>
+</div>
+<p>And you must install <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">tape</span></code> too:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">tape</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Create a file named getusermedia.js in the root folder of the project and paste this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// getUserMedia helper by @HenrikJoreteg used for navigator.getUserMedia shim
+var adapter = require(&#39;webrtc-adapter&#39;);
+
+module.exports = function (constraints, cb) {
+    var error;
+    var haveOpts = arguments.length === 2;
+    var defaultOpts = {video: true, audio: true};
+
+    var denied = &#39;PermissionDeniedError&#39;;
+    var altDenied = &#39;PERMISSION_DENIED&#39;;
+    var notSatisfied = &#39;ConstraintNotSatisfiedError&#39;;
+
+    // make constraints optional
+    if (!haveOpts) {
+        cb = constraints;
+        constraints = defaultOpts;
+    }
+
+    // treat lack of browser support like an error
+    if (typeof navigator === &#39;undefined&#39; || !navigator.getUserMedia) {
+        // throw proper error per spec
+        error = new Error(&#39;MediaStreamError&#39;);
+        error.name = &#39;NotSupportedError&#39;;
+
+        // keep all callbacks async
+        return setTimeout(function () {
+            cb(error);
+        }, 0);
+    }
+
+    // normalize error handling when no media types are requested
+    if (!constraints.audio &amp;&amp; !constraints.video) {
+        error = new Error(&#39;MediaStreamError&#39;);
+        error.name = &#39;NoMediaRequestedError&#39;;
+
+        // keep all callbacks async
+        return setTimeout(function () {
+            cb(error);
+        }, 0);
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(function (stream) {
+        cb(null, stream);
+    }).catch(function (err) {
+        var error;
+        // coerce into an error object since FF gives us a string
+        // there are only two valid names according to the spec
+        // we coerce all non-denied to &quot;constraint not satisfied&quot;.
+        if (typeof err === &#39;string&#39;) {
+            error = new Error(&#39;MediaStreamError&#39;);
+            if (err === denied || err === altDenied) {
+                error.name = denied;
+            } else {
+                error.name = notSatisfied;
+            }
+        } else {
+            // if we get an error object make sure &#39;.name&#39; property is set
+            // according to spec: http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermediaerror-and-navigatorusermediaerrorcallback
+            error = err;
+            if (!error.name) {
+                // this is likely chrome which
+                // sets a property called &quot;ERROR_DENIED&quot; on the error object
+                // if so we make sure to set a name
+                if (error[denied]) {
+                    err.name = denied;
+                } else {
+                    err.name = notSatisfied;
+                }
+            }
+        }
+
+        cb(error);
+    });
+};
+</pre></div>
+</div>
+<p>Next in your component.test.js file you should structure your code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">React</span> <span class="kn">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">Room</span> <span class="kn">from</span> <span class="s2">&quot;../components/room/room&quot;</span><span class="p">;</span>
+
+<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">test</span> <span class="n">file</span> <span class="k">for</span> <span class="n">use</span> <span class="k">with</span> <span class="n">testling</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">The</span> <span class="n">test</span> <span class="n">script</span> <span class="n">language</span> <span class="n">comes</span> <span class="kn">from</span> <span class="nn">tape.</span>
+<span class="o">/*</span> <span class="n">jshint</span> <span class="n">node</span><span class="p">:</span> <span class="n">true</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="k">global</span> <span class="n">Promise</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">test</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;tape&quot;</span><span class="p">);</span>
+
+<span class="n">const</span> <span class="n">getUserMedia</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;../getusermedia&quot;</span><span class="p">);</span>
+
+<span class="n">test</span><span class="p">(</span><span class="s2">&quot;getUserMedia audio-only&quot;</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span><span class="n">audio</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="n">fake</span><span class="p">:</span> <span class="n">true</span><span class="p">};</span>
+    <span class="n">getUserMedia</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">t</span><span class="o">.</span><span class="k">pass</span><span class="p">(</span><span class="s2">&quot;got stream&quot;</span><span class="p">);</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="n">test</span><span class="p">(</span><span class="s2">&quot;getUserMedia video-only&quot;</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span><span class="n">video</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="n">fake</span><span class="p">:</span> <span class="n">true</span><span class="p">};</span>
+    <span class="n">getUserMedia</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">t</span><span class="o">.</span><span class="k">pass</span><span class="p">(</span><span class="s2">&quot;got stream&quot;</span><span class="p">);</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="n">test</span><span class="p">(</span><span class="s2">&quot;getUserMedia audio-video&quot;</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span><span class="n">audio</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="n">video</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="n">fake</span><span class="p">:</span> <span class="n">true</span><span class="p">};</span>
+    <span class="n">getUserMedia</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">t</span><span class="o">.</span><span class="k">pass</span><span class="p">(</span><span class="s2">&quot;got stream&quot;</span><span class="p">);</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>And as you can see this mocks test audio first, video second and both at the same time for the last. Please feel free to visit the official github from this library at <a class="reference external" href="https://github.com/otalk/getUserMedia">getusermedia</a>.</p>
+</section>
+<section id="snapshots">
+<h2>Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
+<p>This kind of tests is the easy ones, you only need to install <code class="docutils literal notranslate"><span class="pre">react-test-renderer</span></code> executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">--</span><span class="n">save</span><span class="o">--</span><span class="n">dev</span> <span class="n">react</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">renderer</span>
+</pre></div>
+</div>
+<p>Create a file inside tests folder named componentName.test.js and import your new library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">renderer</span> <span class="kn">from</span> <span class="s2">&quot;react-test-renderer&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Remember to import the component that you want to test and then structure your snapshot code as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">renderer</span> <span class="kn">from</span> <span class="s2">&quot;react-test-renderer&quot;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">BackSoon</span> <span class="kn">from</span> <span class="s2">&quot;../components/landing/landing&quot;</span><span class="p">;</span>
+
+<span class="n">it</span><span class="p">(</span><span class="s2">&quot;renders the Landing snapshot&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">const</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">&lt;</span><span class="n">BackSoon</span> <span class="o">/&gt;</span><span class="p">)</span><span class="o">.</span><span class="n">toJSON</span><span class="p">();</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">.</span><span class="n">toMatchSnapshot</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">renderer.create</span></code> is like taking a picture of your html code from your component. Declare a const variable to store the element and with <code class="docutils literal notranslate"><span class="pre">toMatchSnapshot()</span></code> we’ll create the snapshot inside a folder that’s created automatically.</p>
+<figure class="align-default">
+<img alt="_template/img/tests.png" src="_template/img/tests.png" />
+</figure>
+<p>The snapshot  result looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Jest Snapshot v1,
+
+exports[renders the Landing snapshot 1] = `&lt;divclassName=&quot;Landing_page&quot;
+
+&lt;divclassName=&quot;left_side&quot;/&gt;&lt;divclassName=&quot;center_down&quot;
+&lt;div
+    className=&quot;slider&quot;
+&gt;
+    &lt;div
+    className=&quot;switch_button&quot;
+    &gt;
+    &lt;input
+        className=&quot;switch_button__checkbox&quot;
+        data-testid=&quot;switch_off&quot;
+        id=&quot;switch_label&quot;
+        name=&quot;switch_button&quot;
+        onClick={[Function]}
+        type=&quot;checkbox&quot;
+    /&gt;
+    &lt;label
+        className=&quot;switch_button__label&quot;
+        htmlFor=&quot;switch_label&quot;
+    /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;divclassName=&quot;right_side&quot;
+&lt;div
+    className=&quot;logo&quot;
+/&gt;
+&lt;div
+    className=&quot;startmeeting&quot;
+/&gt;
+&lt;/div&gt;
+&lt;/div&gt;`;
+</pre></div>
+</div>
+<p>A disadvantage of this kind of test is that there’s no automatic update after executing <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> and if you change some htm labels, you must press <code class="docutils literal notranslate"><span class="pre">u</span></code> to update the snapshot files. Moreover, these don’t detect changes in states or verify argumnets. If you want to know more about snapshot test click <a class="reference external" href="https://semaphoreci.com/community/tutorials/snapshot-testing-react-components-with-jest">this link</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Video APP - React components testing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_code.html">Deliver sanitized code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rendering">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">Snapshots</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="clean_code.html" title="previous chapter">Deliver sanitized code</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Mónica Ávila Moreno.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/testing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

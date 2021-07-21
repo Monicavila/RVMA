@@ -1,4 +1,6 @@
-===================
+.. _description:
+
+
 Project description
 ===================
 
