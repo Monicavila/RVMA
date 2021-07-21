@@ -1,12 +1,6 @@
-conf module
-===========
+.. _description:
 
-.. automodule:: conf
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   
-   ===================
+
 Project description
 ===================
 
