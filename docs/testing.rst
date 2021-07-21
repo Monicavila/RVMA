@@ -274,7 +274,7 @@ Remember to import the component that you want to test and then structure your s
 ``renderer.create`` is like taking a picture of your html code from your component. Declare a const variable to store the element and with ``toMatchSnapshot()`` we'll create the snapshot inside a folder that’s created automatically.
 
 
-.. figure:: ./_template/img/tests.png
+.. figure:: ./_templates/resources/tests.png
     :alt: This is an Image
     :align: center
     :scale: 85%
