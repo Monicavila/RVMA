@@ -1,37 +1,140 @@
 
+
 <!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Testing &mdash; Video APP - React components testing 1.5 documentation</title>
+  
 
-    <title>Testing &#8212; Video APP - React components testing 1.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Deliver sanitized code" href="clean_code.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="next" title="Workflow-Github" href="workflow.html" />
+    <link rel="prev" title="Deliver sanitized code" href="clean_code.html" /> 
 
-  </head><body>
-  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="index.html">
+                Video APP - React components testing
+            </a>
+        </div>
+    </header>
 
-          <div class="body" role="main">
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="index.html">Docs</a></li>
+        
+      <li>Testing</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
             
+        <i class="icon-github-circled"></i>
+        <a href="https://github.com/Monicavila/RVMA/tree/main" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#final-objective">Final objective:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#description-of-the-project">Description of the project:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#problem-to-solve">Problem to solve:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#solution">Solution:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#tools">Tools:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#risks">Risks:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clean_code.html">Deliver sanitized code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rendering">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">Snapshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow-Github</a></li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
   <section id="testing">
 <span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
 <section id="rendering">
@@ -88,7 +191,7 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>We will test if it’s renderd and the elements are displayed well. The render testing works with <code class="docutils literal notranslate"><span class="pre">shallow</span></code> component from <span class="xref std std-doc">enzyme</span> indicating the html label we want to corroborate. In this example is selecting a div that function as a container. In the next page we will learn how to apply this library to test events in a component too. Remember to execute <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> to run the tests.</p>
+<p>We will test if it’s renderd and the elements are displayed well. The render testing works with <code class="docutils literal notranslate"><span class="pre">shallow</span></code> component from <a class="reference internal" href="#events"><span class="std std-ref">enzyme</span></a> indicating the html label we want to corroborate. In this example is selecting a div that function as a container. In the next page we will learn how to apply this library to test events in a component too. Remember to execute <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> to run the tests.</p>
 </section>
 <section id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
@@ -295,9 +398,7 @@ module.exports = function (constraints, cb) {
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">renderer.create</span></code> is like taking a picture of your html code from your component. Declare a const variable to store the element and with <code class="docutils literal notranslate"><span class="pre">toMatchSnapshot()</span></code> we’ll create the snapshot inside a folder that’s created automatically.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="_images/tests.png"><img alt="This is an Image" src="_images/tests.png" style="width: 341.7px; height: 294.09999999999997px;" /></a>
-</figure>
+<a class="reference internal image-reference" href="_images/tests.png"><img alt="Snapshots test file" class="align-center" src="_images/tests.png" style="width: 261.3px; height: 224.9px;" /></a>
 <p>The snapshot  result looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Jest Snapshot v1,
 
@@ -340,78 +441,39 @@ exports[renders the Landing snapshot 1] = `&lt;divclassName=&quot;Landing_page&q
 </section>
 
 
-          </div>
-          
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Video APP - React components testing</a></h1>
+    </div>    
 
 
+  
 
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="description.html">Project description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clean_code.html">Deliver sanitized code</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rendering">Rendering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#events">Events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#snapshots">Snapshots</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="clean_code.html" title="previous chapter">Deliver sanitized code</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mónica Ávila Moreno.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.
         </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2021, Mónica Ávila Moreno.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/testing.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
+    </div>  
 
-    
-
-    
-  </body>
+</body>
 </html>
