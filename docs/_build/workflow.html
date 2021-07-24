@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Workflow-Github &mdash; Video APP - React components testing 1.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Testing" href="testing.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="index.html">
+                Video APP - React components testing
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="index.html">Docs</a></li>
+        
+      <li>Workflow-Github</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+        <i class="icon-github-circled"></i>
+        <a href="https://github.com/Monicavila/RVMA/tree/main" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#final-objective">Final objective:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#description-of-the-project">Description of the project:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#problem-to-solve">Problem to solve:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#solution">Solution:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#tools">Tools:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#risks">Risks:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clean_code.html">Deliver sanitized code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#rendering">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#snapshots">Snapshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow-Github</a></li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <section id="workflow-github">
+<h1>Workflow-Github<a class="headerlink" href="#workflow-github" title="Permalink to this headline">¶</a></h1>
+<p>When you finally succeed with all your React tests, and your terminal is all in green (Enjoy your moment!):</p>
+<a class="reference internal image-reference" href="_images/passed.png"><img alt="Successful tests" class="align-center" src="_images/passed.png" style="width: 335.5px; height: 123.20000000000002px;" /></a>
+<p>It’s time to talk about a strategy for merge and deploy to git. This tool helps to secure that the code that will be merged with the main branch is sanitized and clean, ready to pass successfully the pull request, this schema illustrates the method followed to  implement workflow in our repositories.</p>
+<a class="reference external image-reference" href="https://www.itdo.com/blog/workflow-de-desarrollo-en-github/"><img alt="workflow method" class="align-center" src="_images/workflow.png" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once your pull request has been reviewed and the branch passes your tests, you can deploy
+your changes to verify them in production. <a class="reference external" href="https://guides.github.com/introduction/flow/">If your branch causes issues, you can roll it
+back by deploying the existing main branch</a> into production.</p>
+</div>
+<p>To add this workflow into your repository you’ll need to create a folder named .github and inside this folder other folder named workflows, inside this folder creat a file projecName.yml the result will look like this:</p>
+<a class="reference internal image-reference" href="_images/wffolder.png"><img alt="Workflow folder" class="align-center" src="_images/wffolder.png" style="width: 301.5px; height: 61.5px;" /></a>
+<p>The instructions we’ll delcare inside this file are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name: React Components Test
+# Triggers the workflow on push to main or pull request
+on:
+push:
+    branches:
+    - main
+pull_request:
+    branches:
+    - main
+jobs:
+# Running unit tests workflow
+#name of the job
+components-test:
+#ambient
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+    #node -v
+        node-version: [ &#39;14&#39; ]
+    steps:
+    #https://github.com/marketplace/actions/checkout
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install node dependencies
+        run: npm install
+    - name: Running Unit tests
+        run: npm test
+</pre></div>
+</div>
+<p>First, we will indicate the name of the project. Second, with on we’ll establis that the branches will get merged with main after pass the pull request. Third, run the unit tests workflow. In this part, we set the name of the job and the characteristics of the ambient, like version of node.</p>
+<p>Now got to <a class="reference external" href="https://github.com/marketplace/actions/checkout">https://github.com/marketplace/actions/checkout</a> and click use latest version of checkOut, select the version you prefer or need, copy the code they display and paste in <span class="guilabel">steps</span> section:</p>
+<img alt="CheckOut" class="align-center" src="_images/checkout.png" />
+<p>Finally, we specify that we will use node to install dependencies with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> and run all the tests with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code>. Remember to install your dependencias locally a not globally, workflow doesn’t install global ones. Next, create a new branch in your repository and push your project folder with your workflow file configuration. You will know this configuration is working because a warning to set a pull request to main is displayed in the repository.</p>
+<p>The workflow will be to push updates to your new branch then if pass all tests start a new pull request to main.</p>
+<p>Until all the tests pass and all the code errors are solved it’ll look like this:</p>
+<img alt="Successful build" class="align-center" src="_images/build.png" />
+<p>We will deploy with succes and be able to set a pull request to merge our changes with the main branch:</p>
+<img alt="Successful merge" class="align-center" src="_images/merge.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Manage your commits with the same name of your epics in Jira, which helps to track what Epics are solved and why and on other hand which Epics are late and why.</p>
+</div>
+<img alt="An epic from jira" class="align-center" src="_images/jira.png" />
+</section>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mónica Ávila Moreno.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.
+        </div>
+    </div>  
+
+</body>
+</html>

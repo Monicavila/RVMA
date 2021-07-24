@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eslint and jsdoc &mdash; Video APP - React components testing 1.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="index.html">
+                Video APP - React components testing
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="index.html">Docs</a></li>
+        
+      <li>Eslint and jsdoc</li>
+    
+    
+      <li class="breadcrumbs-aside">
+          
+
+        <i class="icon-github-circled"></i>
+        <a href="https://github.com/Monicavila/RVMA/tree/main" class="fa fa-github"> Edit on GitHub</a>
+          
+
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description.html">Project description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="description.html#final-objective">Final objective:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#description-of-the-project">Description of the project:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#problem-to-solve">Problem to solve:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#solution">Solution:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#tools">Tools:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html#risks">Risks:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clean_code.html">Deliver sanitized code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#rendering">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#snapshots">Snapshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow-Github</a></li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <section id="eslint-and-jsdoc">
+<h1>Eslint and jsdoc<a class="headerlink" href="#eslint-and-jsdoc" title="Permalink to this headline">¶</a></h1>
+<p>Finally, this extras are standarization to secure that the code is under ECMAscript and they give proper information to other developers about the functions or estructure we propused. Install Eslint and jsdoc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">eslint</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+
+<span class="n">npm</span> <span class="n">install</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span> <span class="n">jsdoc</span>
+</pre></div>
+</div>
+<p>The next step is initialized eslint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npx</span> <span class="n">eslint</span> <span class="o">--</span><span class="n">init</span>
+</pre></div>
+</div>
+<p>After we installed jsdoc, we only need to enter <code class="docutils literal notranslate"><span class="pre">/**</span></code> and fill in the information required to document our functions, for example:</p>
+<img alt="Successful tests" class="align-center" src="_images/jsdoc.png" />
+<p>It helps to restrict your parameters as typescript does, that’s a good point to start if you haven’t work with typescript before.</p>
+<p>The moment we <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">npx</span> <span class="pre">eslint</span> <span class="pre">--init</span></code>, it creates a JSON file based on the answers we give in the initialization process. If you want to learn more about which options are more accurate for your project , you can read this documentation <a class="reference external" href="https://dev.to/devdammak/setting-up-eslint-in-your-javascript-project-with-vs-code-2amf">Setting up ESLINT in your JavaSrcipt Project with VS Code</a>. When the JSON was created, is time to setup the rules. Because this project is for begginers developers, I will give you a basic configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;browser&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;node&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;es2021&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;jest&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;extends&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;eslint:recommended&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;plugin:react/recommended&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;parserOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ecmaFeatures&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;jsx&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;ecmaVersion&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;sourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;module&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;react&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;no-console&quot;</span><span class="p">:</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;no-use-before-define&quot;</span><span class="p">:</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;no-empty&quot;</span><span class="p">:</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;no-irregular-whitespace&quot;</span><span class="p">:</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;spaced-comment&quot;</span><span class="p">:</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="o">//</span><span class="n">Only</span> <span class="n">apply</span> <span class="ow">in</span> <span class="n">App</span><span class="o">.</span><span class="n">js</span> <span class="n">before</span> <span class="n">fix</span> <span class="nb">all</span> <span class="n">eslint</span> <span class="n">warnings</span><span class="p">,</span> <span class="n">because</span> <span class="ow">is</span> <span class="n">under</span> <span class="n">workflow</span> <span class="k">pass</span> <span class="n">params</span>
+        <span class="s2">&quot;react/prop-types&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+        <span class="o">//</span><span class="n">Only</span> <span class="n">apply</span> <span class="k">for</span> <span class="n">room</span><span class="o">.</span><span class="n">jsx</span> <span class="n">before</span> <span class="n">fix</span> <span class="nb">all</span> <span class="n">eslint</span> <span class="n">warnings</span><span class="p">,</span> <span class="n">because</span> <span class="ow">is</span> <span class="n">under</span> <span class="n">workflow</span> <span class="k">pass</span> <span class="n">params</span>
+        <span class="s2">&quot;react/jsx-key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quotes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;allowTemplateLiterals&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You must read the official documents to set a better configuration for your projects. Here are the rules list and how to <a class="reference external" href="https://eslint.org/docs/user-guide/configuring/rules#configuring-rules">Configuring Rules</a>.</p>
+<p>Believe that when you pass all this libraries with success, your code is ready to merge with the main branch and your team will be assured that your code is legit!</p>
+</section>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mónica Ávila Moreno.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.
+        </div>
+    </div>  
+
+</body>
+</html>

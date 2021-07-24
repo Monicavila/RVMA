@@ -62,7 +62,7 @@ Remeber to import React and your component also in this file. The code structure
         });
     });
 
-We will test if it's renderd and the elements are displayed well. The render testing works with ``shallow`` component from :doc:`enzyme<Testing/Events>` indicating the html label we want to corroborate. In this example is selecting a div that function as a container. In the next page we will learn how to apply this library to test events in a component too. Remember to execute ``npm test`` to run the tests.
+We will test if it's renderd and the elements are displayed well. The render testing works with ``shallow`` component from :ref:`enzyme <Events>` indicating the html label we want to corroborate. In this example is selecting a div that function as a container. In the next page we will learn how to apply this library to test events in a component too. Remember to execute ``npm test`` to run the tests.
 
 Events
 ------
@@ -274,10 +274,10 @@ Remember to import the component that you want to test and then structure your s
 ``renderer.create`` is like taking a picture of your html code from your component. Declare a const variable to store the element and with ``toMatchSnapshot()`` we'll create the snapshot inside a folder that’s created automatically.
 
 
-.. figure:: ./_templates/resources/tests.png
-    :alt: This is an Image
+.. image:: ./_templates/resources/tests.png
+    :alt: Snapshots test file
     :align: center
-    :scale: 85%
+    :scale: 65%
 
 
 The snapshot  result looks like this::
