@@ -14,7 +14,7 @@ Welcome to Video APP - React components testing's documentation!
    clean_code
    testing
    workflow
-   standardization
+   standar
 
 
 

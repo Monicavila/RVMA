@@ -1551,7 +1551,7 @@ sup{
   font-family:"fontello";
   font-style:normal;
   font-weight:normal;
-  speak-as:none;
+  speak:none;
   display:inline-block;
   text-decoration:inherit;
   width:1em;
@@ -1663,13 +1663,6 @@ sup{
 
 .breadcrumbs code.literal{
   color:#5f5f5f;
-}
-
-.icon-github-circled {
-  background-size: cover;
-  background-position: center;
-  background-repeat: none;
-  background-image: url(../templates/resources/icon.png);
 }
 
 @media (max-width: 991px){

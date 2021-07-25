@@ -1,4 +1,4 @@
-.. _workflow
+.. _workflow:
 
 Workflow-Github
 ===============
