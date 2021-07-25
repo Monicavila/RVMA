@@ -1,44 +1,47 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lato:300,400,400i,700,900");
-/*! Karma-CSS v1.9.8 MIT License | http://karmacss.com | https://github.com/accentdesign/karma-css */
+/*! Karma-CSS v1.9.5 MIT License | http://karmacss.com | https://github.com/accentdesign/karma-css */
 .container{
-  width:100%;
-  margin-right:auto;
-  margin-left:auto;
   padding-right:15px;
   padding-left:15px;
+  margin-right:auto;
+  margin-left:auto;
 }
 
 @media (min-width: 576px){
   .container{
-    max-width:540px;
+    width:540px;
+    max-width:100%;
   }
 }
 
 @media (min-width: 768px){
   .container{
-    max-width:720px;
+    width:720px;
+    max-width:100%;
   }
 }
 
 @media (min-width: 992px){
   .container{
-    max-width:960px;
+    width:960px;
+    max-width:100%;
   }
 }
 
 @media (min-width: 1200px){
   .container{
-    max-width:1140px;
+    width:1140px;
+    max-width:100%;
   }
 }
 
 .container-fluid{
   width:100%;
-  margin-right:auto;
-  margin-left:auto;
   padding-right:15px;
   padding-left:15px;
+  margin-right:auto;
+  margin-left:auto;
 }
 
 .row{
@@ -67,8 +70,8 @@
 .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
 .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
 .col-xl-auto{
-  position:relative;
   width:100%;
+  min-height:1px;
   padding-right:15px;
   padding-left:15px;
 }
@@ -85,7 +88,7 @@
   -ms-flex:0 0 auto;
   flex:0 0 auto;
   width:auto;
-  max-width:100%;
+  max-width:none;
 }
 
 .col-1{
@@ -276,7 +279,7 @@
     -ms-flex:0 0 auto;
     flex:0 0 auto;
     width:auto;
-    max-width:100%;
+    max-width:none;
   }
   .col-sm-1{
     -ms-flex:0 0 8.333333%;
@@ -433,7 +436,7 @@
     -ms-flex:0 0 auto;
     flex:0 0 auto;
     width:auto;
-    max-width:100%;
+    max-width:none;
   }
   .col-md-1{
     -ms-flex:0 0 8.333333%;
@@ -590,7 +593,7 @@
     -ms-flex:0 0 auto;
     flex:0 0 auto;
     width:auto;
-    max-width:100%;
+    max-width:none;
   }
   .col-lg-1{
     -ms-flex:0 0 8.333333%;
@@ -747,7 +750,7 @@
     -ms-flex:0 0 auto;
     flex:0 0 auto;
     width:auto;
-    max-width:100%;
+    max-width:none;
   }
   .col-xl-1{
     -ms-flex:0 0 8.333333%;
@@ -894,8 +897,8 @@
 
 *{
   box-sizing:border-box;
-  margin:0;
   padding:0;
+  margin:0;
 }
 
 *::before, *::after{
@@ -905,17 +908,13 @@
 html{
   font-size:62.5%;
   line-height:1.6;
-  -webkit-text-size-adjust:100%;
-  -moz-text-size-adjust:100%;
-  -ms-text-size-adjust:100%;
-  text-size-adjust:100%;
 }
 
 body{
-  color:#5f5f5f;
-  font-weight:400;
-  font-size:16px;
   font-family:"Lato", sans-serif;
+  font-size:16px;
+  font-weight:400;
+  color:#5f5f5f;
   background:#fafbfc;
 }
 
@@ -948,27 +947,27 @@ button,
 }
 
 .button{
-  display:inline-block;
   box-sizing:border-box;
+  display:inline-block;
   padding:0.8rem 1rem;
   overflow:visible;
-  color:#5f5f5f;
-  font-weight:400;
-  font-size:1.5rem;
   font-family:inherit;
+  font-size:1.5rem;
+  font-weight:400;
   line-height:1.5;
-  white-space:nowrap;
+  color:#5f5f5f;
   text-align:center;
   text-decoration:none;
-  background-color:white;
-  border:1px solid #e6e6e6;
-  border-radius:0.25rem;
+  white-space:nowrap;
   cursor:pointer;
-  transition:background-color linear 250ms, border-color linear 250ms;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+  background-color:white;
+  border:1px solid #e6e6e6;
+  border-radius:0.25rem;
+  transition:background-color linear 250ms, border-color linear 250ms;
 }
 
 .button:hover, .button:focus{
@@ -1090,8 +1089,8 @@ samp{
 
 code{
   padding:0.2rem 0.5rem;
-  color:#5f5f5f;
   font-size:100%;
+  color:#5f5f5f;
   word-break:break-word;
   background:#e7eaeb;
   border:1px solid #e6e6e6;
@@ -1100,11 +1099,11 @@ code{
 
 pre{
   display:block;
-  margin-bottom:2.5rem;
   padding:2rem;
+  margin-bottom:2.5rem;
   overflow-x:auto;
-  color:#5f5f5f;
   font-size:90%;
+  color:#5f5f5f;
   white-space:pre;
   background:#e7eaeb;
   border:1px solid #e6e6e6;
@@ -1112,8 +1111,8 @@ pre{
 }
 
 pre code{
-  color:inherit;
   font-size:inherit;
+  color:inherit;
   word-break:normal;
 }
 
@@ -1128,9 +1127,9 @@ form{
 input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="week"]{
   box-sizing:border-box;
   margin-bottom:1.5rem;
-  color:#5f5f5f;
   font-family:inherit;
   line-height:1.5;
+  color:#5f5f5f;
   background:white;
   border:1px solid #e6e6e6;
   border-radius:0.25rem;
@@ -1149,8 +1148,8 @@ input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-loc
 }
 
 input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"]{
-  height:calc(3.85rem + 2px);
   -webkit-appearance:listbox;
+  height:calc(3.85rem + 2px);
 }
 
 input[type="checkbox"], input[type="radio"]{
@@ -1163,8 +1162,8 @@ input[type="checkbox"], input[type="radio"]{
 }
 
 ::-webkit-datetime-edit-fields-wrapper{
-  margin:0;
   padding:0;
+  margin:0;
 }
 
 ::-webkit-input-placeholder{
@@ -1173,6 +1172,11 @@ input[type="checkbox"], input[type="radio"]{
 }
 
 ::-moz-placeholder{
+  color:#b9b9b9;
+  opacity:1;
+}
+
+:-ms-input-placeholder{
   color:#b9b9b9;
   opacity:1;
 }
@@ -1190,9 +1194,9 @@ input[type="checkbox"], input[type="radio"]{
 textarea{
   box-sizing:border-box;
   margin-bottom:1.5rem;
-  color:#5f5f5f;
   font-family:inherit;
   line-height:1.5;
+  color:#5f5f5f;
   background:white;
   border:1px solid #e6e6e6;
   border-radius:0.25rem;
@@ -1201,8 +1205,8 @@ textarea{
   padding:0.8rem 1rem;
   font-size:1.5rem;
   max-width:100%;
-  overflow:auto;
   -webkit-appearance:none;
+  overflow:auto;
 }
 
 textarea:focus{
@@ -1214,9 +1218,9 @@ textarea:focus{
 select{
   box-sizing:border-box;
   margin-bottom:1.5rem;
-  color:#5f5f5f;
   font-family:inherit;
   line-height:1.5;
+  color:#5f5f5f;
   background:white;
   border:1px solid #e6e6e6;
   border-radius:0.25rem;
@@ -1240,17 +1244,17 @@ select:not([multiple]){
 
 label{
   display:block;
-  margin-bottom:0.5rem;
+  margin-bottom:.5rem;
   font-weight:600;
 }
 
 legend{
-  display:block;
   box-sizing:border-box;
+  display:block;
   max-width:100%;
-  margin-bottom:0.5rem;
-  color:inherit;
+  margin-bottom:.5rem;
   font-weight:600;
+  color:inherit;
   white-space:normal;
 }
 
@@ -1282,20 +1286,20 @@ figure{
 }
 
 ul{
-  margin-bottom:2.5rem;
   padding-left:2rem;
-  list-style:circle outside;
-}
-
-ol{
   margin-bottom:2.5rem;
-  padding-left:1.7rem;
-  list-style:decimal outside;
+  list-style:circle outside;
 }
 
 ul ul,
 ul ol{
   margin:0;
+}
+
+ol{
+  padding-left:1.7rem;
+  margin-bottom:2.5rem;
+  list-style:decimal outside;
 }
 
 ol ol,
@@ -1321,9 +1325,9 @@ table{
   max-width:100%;
   margin-bottom:2.5rem;
   font-size:90%;
-  background-color:transparent;
-  border-collapse:collapse;
   border-spacing:0;
+  border-collapse:collapse;
+  background-color:transparent;
 }
 
 caption{
@@ -1346,17 +1350,16 @@ td{
 .table-bordered, table.docutils:not(.footnote):not(.citation), table.docutils.field-list{
   border:solid 1px #e6e6e6;
 }
-.table-headed > thead > tr > th, table.docutils:not(.footnote):not(.citation) > thead > tr > th, table.docutils.field-list > thead > tr > th,
-.table-headed > tbody > tr > th,
-table.docutils:not(.footnote):not(.citation) > tbody > tr > th,
-table.docutils.field-list > tbody > tr > th{
+
+.table-headed th, table.docutils:not(.footnote):not(.citation) th, table.docutils.field-list th{
   background-color:#e7e9ec;
 }
-.table-striped > tbody > tr:nth-child(odd), table.docutils:not(.footnote):not(.citation) > tbody > tr:nth-child(odd){
+
+.table-striped tbody tr:nth-child(odd), table.docutils:not(.footnote):not(.citation) tbody tr:nth-child(odd){
   background-color:#fafafa;
 }
 
-.table-hover > tbody > tr:hover{
+.table-hover tbody tr:hover{
   background-color:whitesmoke;
 }
 
@@ -1367,8 +1370,8 @@ h1, #search-results h2, #search-results .document > .section .toctree-wrapper .c
 .h4, h5,
 .h5, h6,
 .h6{
-  color:#5f5f5f;
   font-family:"Lato", sans-serif;
+  color:#5f5f5f;
 }
 
 h1 small, #search-results h2 small, #search-results .document > .section .toctree-wrapper .caption small, .document > .section .toctree-wrapper #search-results .caption small, .h1 small, h2 small, .document > .section .toctree-wrapper .caption small, .h2 small, h3 small, #search-results ul.search > li > a small, .h3 small, h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small{
@@ -1379,48 +1382,48 @@ h1 small, #search-results h2 small, #search-results .document > .section .toctre
 h1, #search-results h2, #search-results .document > .section .toctree-wrapper .caption, .document > .section .toctree-wrapper #search-results .caption,
 .h1{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:32px;
+  font-weight:700;
   line-height:1.2;
 }
 
 h2, .document > .section .toctree-wrapper .caption,
 .h2{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:24px;
+  font-weight:700;
   line-height:1.25;
 }
 
 h3, #search-results ul.search > li > a,
 .h3{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:20.8px;
+  font-weight:700;
   line-height:1.3;
 }
 
 h4,
 .h4{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:17.6px;
+  font-weight:700;
   line-height:1.35;
 }
 
 h5,
 .h5{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:16px;
+  font-weight:700;
   line-height:1.5;
 }
 
 h6,
 .h6{
   margin:4rem 0 1.5rem;
-  font-weight:700;
   font-size:14.4px;
+  font-weight:700;
   line-height:1.6;
 }
 
@@ -1434,8 +1437,8 @@ p{
 }
 
 blockquote{
-  margin-bottom:2.5rem;
   padding:1rem 1.5rem;
+  margin-bottom:2.5rem;
   border-left:3px solid #e6e6e6;
 }
 
@@ -1457,11 +1460,11 @@ sup{
 }
 
 sub{
-  bottom:-0.25em;
+  bottom:-.25em;
 }
 
 sup{
-  top:-0.5em;
+  top:-.5em;
 }
 .alert, .admonition{
   position:relative;
@@ -1660,13 +1663,6 @@ sup{
 
 .breadcrumbs code.literal{
   color:#5f5f5f;
-}
-
-.icon-github-circled {
-  background-size: cover;
-  background-position: center;
-  background-repeat: none;
-  background-image: url(../templates/resources/icon.png);
 }
 
 @media (max-width: 991px){
@@ -2529,8 +2525,8 @@ dl:not(.docutils).data dt{
 }
 
 .list-style-reset{
-  margin:0;
   padding:0;
+  margin:0;
   list-style:none !important;
 }
 
@@ -2633,7 +2629,7 @@ dl:not(.docutils).data dt{
 }
 
 .muted{
-  opacity:0.7;
+  opacity:.7;
 }
 
 .nowrap{
