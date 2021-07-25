@@ -10,6 +10,7 @@ Welcome to Video APP - React components testing's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   resume
    description
    clean_code
    testing
