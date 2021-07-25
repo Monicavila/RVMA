@@ -1,4 +1,4 @@
-.. _standardization
+.. _standar:
 
 Eslint and jsdoc
 ================
